@@ -66,3 +66,13 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+task fixedJar(type: Jar) {
+    dependsOn 'build'
+    manifest {
+        attributes 'Main-Class': 'io.ktor.server.netty.EngineMain'
+    }
+    baseName = project.name + '-fixed'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}

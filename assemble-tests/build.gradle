@@ -16,13 +16,3 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-
-task fixedJar(type: Jar) {
-    dependsOn 'build'
-    manifest {
-        attributes 'Main-Class': 'io.ktor.server.netty.EngineMain'
-    }
-    baseName = project.name + '-fixed'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
-}
