@@ -1,2 +1,5 @@
 rootProject.name = 'auto-asseble-tests'
-
+//Web service for testing
+include 'core'
+//Assemble tests
+include 'assemble-tests'
