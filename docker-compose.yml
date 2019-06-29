@@ -2,13 +2,7 @@ version: '2'
 services:
   core:
     build:
-      context: ./core
+      context: .
     container_name: core
-    ports:
-      - "8080:8080"
-  assemble-tests:
-    build:
-      context: ./assemble-tests
-    container_name: assemble-tests
     ports:
       - "8080:8080"
