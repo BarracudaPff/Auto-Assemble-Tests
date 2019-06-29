@@ -1,0 +1,9 @@
+# IDE folders
+/.idea
+
+# Build folders
+/.gradle
+/build
+/core/build
+
+/assemble-tests/src
