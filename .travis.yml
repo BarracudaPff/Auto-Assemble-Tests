@@ -5,13 +5,13 @@ jdk:
   - openjdk8
 
 script:
-  - ./gradlew assemble-tests:test
-  - docker build -t auto-assemble-tests .
-  - docker run -d -p 8080:8080 --name auto-assemble-tests_container auto-assemble-tests && sleep 10
+  - ./gradlew core:test
+  - docker build -t aat .
+  - docker run -d -p 8080 --name aat-container aat && sleep 10
   - curl http://127.0.0.1:8080/v1/info
-  - docker stop auto-assemble-tests_container
-  - docker rm auto-assemble-tests_container
-  - docker rmi auto-assemble-tests
+  - docker stop aat-container
+  - docker rm aat-container
+  - docker rmi aat
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
